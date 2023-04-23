@@ -18,7 +18,6 @@ public class DiscordBot {
         }
         try {
             this.jda = JDABuilder.createDefault(token)
-
                     .setActivity(Activity.watching(Main.getInstance().getConfig().getFile().getString("bot-activity", "")))
                     .setStatus(OnlineStatus.fromKey(Main.getInstance().getConfig().getFile().getString("bot-status", "online")))
                     .build().awaitReady();
