@@ -18,7 +18,7 @@ public class Main extends Plugin {
     @Override
     public void onEnable() {
         INSTANCE = this;
-        this.config = new FileConfiguration("dc-bridge");
+        this.config = new FileConfiguration("plugins/dc-bridge/dc-bridge");
         this.bot = new DiscordBot(this.config.getFile().getString("bot-token"));
         this.getProxy().getPluginManager().registerListener(this, new ChatListener());
     }
