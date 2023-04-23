@@ -1,6 +1,7 @@
 package de.chloedev.dcbridge.discord;
 
 import de.chloedev.dcbridge.Main;
+import de.chloedev.dcbridge.event.DiscordChatListener;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -20,6 +21,7 @@ public class DiscordBot {
             this.jda = JDABuilder.createDefault(token)
                     .setActivity(Activity.watching(Main.getInstance().getConfig().getFile().getString("bot-activity", "")))
                     .setStatus(OnlineStatus.fromKey(Main.getInstance().getConfig().getFile().getString("bot-status", "online")))
+                    .addEventListeners(new DiscordChatListener())
                     .build().awaitReady();
             Main.getInstance().getLogger().info("Sucessfully started Bot.");
         } catch (InterruptedException e) {
