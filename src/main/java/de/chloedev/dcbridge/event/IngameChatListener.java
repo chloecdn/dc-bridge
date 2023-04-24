@@ -12,7 +12,7 @@ public class IngameChatListener implements Listener {
 
     @EventHandler
     public void onChat(ChatEvent e) {
-        if (e.getSender() instanceof ProxiedPlayer p && !e.getMessage().startsWith("/")) {
+        if (e.getSender() instanceof ProxiedPlayer p && !e.getMessage().startsWith("/") && !(e.getMessage().startsWith("<@") && e.getMessage().endsWith(">"))) {
             DiscordUtil.sendMessageToChannel(TextChannel.GENERAl, Main.getInstance().getConfig().getFile().getString("chat-message-format").replace("{player}", p.getName()).replace("{message}", e.getMessage()), true);
         }
     }
