@@ -1,6 +1,7 @@
 package de.chloedev.dcbridge.event;
 
 import de.chloedev.dcbridge.Main;
+import de.chloedev.dcbridge.Utils;
 import de.chloedev.dcbridge.discord.TextChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -23,7 +24,7 @@ public class DiscordChatListener extends ListenerAdapter {
             Collection<ProxiedPlayer> players = Main.getInstance().getProxy().getPlayers();
             if (!players.isEmpty() && message.length() < 256) {
                 players.forEach(p -> {
-                    p.sendMessage(ChatMessageType.CHAT, new TextComponent("§7[§9Discord§7] " + e.getAuthor().getName() + ": " + message));
+                    p.sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(Utils.translate("&7[&9Discord&7] " + e.getAuthor().getName() + ": " + message)));
                 });
             }
         }
