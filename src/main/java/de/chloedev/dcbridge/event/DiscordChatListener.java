@@ -1,8 +1,8 @@
 package de.chloedev.dcbridge.event;
 
 import de.chloedev.dcbridge.Main;
-import de.chloedev.dcbridge.Utils;
 import de.chloedev.dcbridge.discord.TextChannel;
+import de.chloedev.dcbridge.util.Utils;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.md_5.bungee.api.ChatMessageType;
@@ -19,13 +19,11 @@ public class DiscordChatListener extends ListenerAdapter {
         if (e.getAuthor().isBot() || e.getMessage().getContentRaw().startsWith(";")) {
             return;
         }
-        if (e.getChannel().getId().equals(TextChannel.GENERAl.getId())) { // only accept messages from general
-            String message = e.getMessage().getContentRaw(); // i prefer raw, do what you gotta do.}
+        if (e.getChannel().getId().equals(TextChannel.GENERAl.getId())) {
+            String message = e.getMessage().getContentRaw().replaceAll("<@.*>", ""); //remove pinged users from message.
             Collection<ProxiedPlayer> players = Main.getInstance().getProxy().getPlayers();
             if (!players.isEmpty() && message.length() < 256) {
-                players.forEach(p -> {
-                    p.sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(Utils.translate("&7[&9Discord&7] " + e.getAuthor().getName() + ": " + message)));
-                });
+                players.forEach(p -> p.sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(Utils.translate("&7[&9Discord&7] " + e.getAuthor().getName() + ": " + message))));
             }
         }
     }

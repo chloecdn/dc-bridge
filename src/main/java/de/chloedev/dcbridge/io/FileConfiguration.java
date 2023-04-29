@@ -33,4 +33,14 @@ public class FileConfiguration {
             e.printStackTrace();
         }
     }
+
+    public void reload() {
+        try {
+            this.file.createOrLoad();
+            Main.getInstance().getLogger().info("Reloaded Config.");
+        } catch (IOException e) {
+            Main.getInstance().getLogger().severe("Couldn't Reload Config: ");
+            e.printStackTrace();
+        }
+    }
 }

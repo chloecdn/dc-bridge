@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
+import net.dv8tion.jda.api.utils.MemberCachePolicy;
 
 public class DiscordBot {
 
@@ -24,6 +25,8 @@ public class DiscordBot {
                     .setStatus(OnlineStatus.fromKey(Main.getInstance().getConfig().getFile().getString("bot-status", "online")))
                     .addEventListeners(new DiscordChatListener())
                     .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                    .enableIntents(GatewayIntent.GUILD_MEMBERS)
+                    .setMemberCachePolicy(MemberCachePolicy.ALL)
                     .build().awaitReady();
             Main.getInstance().getLogger().info("Sucessfully started Bot.");
         } catch (InterruptedException e) {
