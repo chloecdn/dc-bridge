@@ -26,4 +26,9 @@ public class DiscordUtil {
         MessageEmbed embed = new EmbedBuilder().setTitle(embedTitle).setDescription(embedText).setFooter(embedFooter).setColor(color).build();
         sendEmbedToChannel(channel, embed, queue);
     }
+
+    public static void sendEmbedToChannel(TextChannel channel, String embedTitle, String embedText, String embedFooter, String imageUrl, int color, boolean queue) {
+        MessageEmbed embed = new EmbedBuilder().setTitle(embedTitle).setDescription(embedText).setFooter(embedFooter).setThumbnail(imageUrl).setColor(color).build();
+        sendEmbedToChannel(channel, embed, queue);
+    }
 }

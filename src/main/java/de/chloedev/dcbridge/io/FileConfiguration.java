@@ -1,6 +1,7 @@
 package de.chloedev.dcbridge.io;
 
 import de.chloedev.dcbridge.Main;
+import org.jetbrains.annotations.Nullable;
 import org.simpleyaml.configuration.file.YamlFile;
 
 import java.io.IOException;
@@ -18,6 +19,11 @@ public class FileConfiguration {
             e.printStackTrace();
             //Bungee can't disable a plugin, woopeedoo, enjoy the errors my lads ._.
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T get(Class<T> type, String key, @Nullable T def) {
+        return (T) this.file.get(key, def);
     }
 
     public YamlFile getFile() {

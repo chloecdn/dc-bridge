@@ -2,7 +2,7 @@ package de.chloedev.dcbridge;
 
 import de.chloedev.dcbridge.command.CoreCommand;
 import de.chloedev.dcbridge.discord.DiscordBot;
-import de.chloedev.dcbridge.event.IngameChatListener;
+import de.chloedev.dcbridge.event.IngameListener;
 import de.chloedev.dcbridge.io.FileConfiguration;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -20,9 +20,9 @@ public class Main extends Plugin {
     public void onEnable() {
         INSTANCE = this;
         this.config = new FileConfiguration("plugins/dc-bridge/dc-bridge");
-        this.bot = new DiscordBot(this.config.getFile().getString("bot-token"));
+        this.bot = new DiscordBot(this.config.get(String.class, "bot-token", null));
         this.getProxy().getPluginManager().registerCommand(this, new CoreCommand());
-        this.getProxy().getPluginManager().registerListener(this, new IngameChatListener());
+        this.getProxy().getPluginManager().registerListener(this, new IngameListener());
     }
 
     public FileConfiguration getConfig() {

@@ -3,7 +3,7 @@ package de.chloedev.dcbridge.command.sub;
 import de.chloedev.dcbridge.Main;
 import de.chloedev.dcbridge.command.SubCommand;
 import de.chloedev.dcbridge.util.Constants;
-import de.chloedev.dcbridge.util.Utils;
+import de.chloedev.dcbridge.util.Util;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -30,7 +30,7 @@ public class SyncSubCommand extends SubCommand {
 
     @Override
     public void onExecute(ProxiedPlayer sender, String[] args) {
-        if (Utils.isGameUserSynced(sender.getUniqueId())) {
+        if (Util.isGameUserSynced(sender.getUniqueId())) {
             sender.sendMessage(new TextComponent(Constants.PLUGIN_PREFIX + "§cYour Account is already synced!"));
             return;
         }
@@ -41,7 +41,7 @@ public class SyncSubCommand extends SubCommand {
         String userId = args[0];
         // Doing it async because `findMembers` takes quite some time, and meanwhile freezes the current task.
         Main.getInstance().getProxy().getScheduler().runAsync(Main.getInstance(), () -> {
-            List<Member> members = Utils.getMainGuild().findMembers(member -> !member.getUser().isBot()).get();
+            List<Member> members = Util.getMainGuild().findMembers(member -> !member.getUser().isBot()).get();
             boolean b1 = false;
             for (Member m : members) {
                 if (userId.equals(m.getId())) {

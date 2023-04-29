@@ -2,7 +2,7 @@ package de.chloedev.dcbridge.event;
 
 import de.chloedev.dcbridge.Main;
 import de.chloedev.dcbridge.discord.TextChannel;
-import de.chloedev.dcbridge.util.Utils;
+import de.chloedev.dcbridge.util.Util;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.md_5.bungee.api.ChatMessageType;
@@ -23,7 +23,7 @@ public class DiscordChatListener extends ListenerAdapter {
             String message = e.getMessage().getContentRaw().replaceAll("<@.*>", ""); //remove pinged users from message.
             Collection<ProxiedPlayer> players = Main.getInstance().getProxy().getPlayers();
             if (!players.isEmpty() && message.length() < 256) {
-                players.forEach(p -> p.sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(Utils.translate("&7[&9Discord&7] " + e.getAuthor().getName() + ": " + message))));
+                players.forEach(p -> p.sendMessage(ChatMessageType.CHAT, TextComponent.fromLegacyText(Util.translate("&7[&9Discord&7] " + e.getAuthor().getName() + ": " + message))));
             }
         }
     }
