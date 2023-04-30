@@ -7,12 +7,17 @@
     <groupId>de.chloedev</groupId>
     <artifactId>dc-bridge</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>dc-bridge</name>
 
+    <modules>
+        <module>dc-bridge-proxy</module>
+        <module>dc-bridge-spigot</module>
+    </modules>
+
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -40,7 +45,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>proxy/plugins/dc-bridge.jar</outputFile>
+                            <outputFile>C:/Users/chloe/IdeaProjects/dc-bridge/export/${artifactId}.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -63,39 +68,29 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>jeff-media-public</id>
+            <name>JEFF Media GbR Repository</name>
+            <url>https://repo.jeff-media.com/public</url>
+        </repository>
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
-            <version>1.19-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.dv8tion</groupId>
-            <artifactId>JDA</artifactId>
-            <version>5.0.0-beta.8</version>
-        </dependency>
         <dependency>
             <groupId>me.carleslc.Simple-YAML</groupId>
             <artifactId>Simple-Yaml</artifactId>
             <version>1.8.4</version>
         </dependency>
         <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-minimessage</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.kyori</groupId>
-            <artifactId>adventure-text-serializer-legacy</artifactId>
-            <version>4.11.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jeff_media.playerdataapi</groupId>
+            <artifactId>playerdataapi-dist</artifactId>
+            <version>1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

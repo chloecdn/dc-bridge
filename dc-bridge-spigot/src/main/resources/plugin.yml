@@ -1,0 +1,7 @@
+name: DCBridge
+version: '${project.version}'
+main: de.chloedev.dcbridge.spigot.Main
+api-version: 1.19
+authors: [ ChloeCDN ]
+depend:
+  - "PlayerDataAPI"

@@ -1,4 +1,0 @@
-name: Discord-Bridge
-version: '${project.version}'
-main: de.chloedev.dcbridge.Main
-author: ChloeCDN

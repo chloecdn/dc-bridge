@@ -1,0 +1,6 @@
+name: DCBridge
+version: '${project.version}'
+main: de.chloedev.dcbridge.proxy.Main
+author: ChloeCDN
+depends:
+  - "PlayerDataAPI"
