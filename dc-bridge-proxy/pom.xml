@@ -12,6 +12,25 @@
     <artifactId>dc-bridge-proxy</artifactId>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <outputFile>C:/Users/chloe/IdeaProjects/dc-bridge/export/${artifactId}.jar</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -41,6 +60,11 @@
             <groupId>net.kyori</groupId>
             <artifactId>adventure-text-serializer-legacy</artifactId>
             <version>4.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>de.chloedev</groupId>
+            <artifactId>dc-bridge-shared</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>

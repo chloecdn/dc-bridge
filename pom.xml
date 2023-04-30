@@ -14,6 +14,7 @@
     <modules>
         <module>dc-bridge-proxy</module>
         <module>dc-bridge-spigot</module>
+        <module>dc-bridge-shared</module>
     </modules>
 
     <properties>
@@ -45,7 +46,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <outputFile>C:/Users/chloe/IdeaProjects/dc-bridge/export/${artifactId}.jar</outputFile>
+                            <outputFile>C:/Users/chloe/IdeaProjects/dc-bridge/trash/${artifactId}.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -53,7 +54,7 @@
         </plugins>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>dc-bridge-shared/src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

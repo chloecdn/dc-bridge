@@ -5,8 +5,7 @@ proxy
 *.iml
 # Proxy
 dc-bridge-proxy/target
-dc-bridge-proxy/*.iml
 # Spigot
 dc-bridge-spigot/target
-dc-bridge-spigot/*.iml
-*.jar
+# Shared
+dc-bridge-shared/target

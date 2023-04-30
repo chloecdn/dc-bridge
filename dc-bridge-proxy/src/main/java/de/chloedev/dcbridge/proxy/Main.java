@@ -6,6 +6,7 @@ import de.chloedev.dcbridge.proxy.discord.DiscordBot;
 import de.chloedev.dcbridge.proxy.event.IngameListener;
 import de.chloedev.dcbridge.proxy.io.FileConfiguration;
 import de.chloedev.dcbridge.proxy.network.NetworkManager;
+import de.chloedev.dcbridge.proxy.network.listener.impl.PlayerAdvancementListener;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -29,8 +30,10 @@ public class Main extends Plugin {
         this.playerDataAPI = (PlayerDataAPI) ProxyServer.getInstance().getPluginManager().getPlugin("PlayerDataAPI");
         this.getProxy().getPluginManager().registerCommand(this, new CoreCommand());
         this.getProxy().getPluginManager().registerListener(this, new IngameListener());
-        this.networkManager = new NetworkManager();
-        this.playerDataAPI.getProvider().redisSubscribe(this.networkManager, "dcbridge:test");
+        this.networkManager = new NetworkManager(
+                this.playerDataAPI.getProvider(),
+                new PlayerAdvancementListener()
+        );
     }
 
     public FileConfiguration getConfig() {
