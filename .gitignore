@@ -3,6 +3,7 @@
 lobby
 proxy
 *.iml
+trash
 # Proxy
 dc-bridge-proxy/target
 # Spigot
